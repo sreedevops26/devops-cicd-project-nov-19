@@ -4,6 +4,10 @@
    - name: pulling docker image from docker registry
      raw: docker pull sreedevops26/nginx:1.0
 
+   - name: remove existing docker container from docker host
+     raw: docker rm -f test
+     ignore_errors: true
+
    - name: spinup docker container
      raw: docker run -dti --name webapp -p 80:80 sreedevops26/nginx:1.0 /bin/bash
 
