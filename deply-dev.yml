@@ -1,0 +1,17 @@
+---
+ - hosts: dev
+   tasks:
+   - name: pulling docker image from docker registry
+     raw: docker pull sreedevops26/nginx:1.0
+
+   - name: spinup docker container
+     raw: docker run -dti --name webapp -p 80:80 sreedevops26/nginx:1.0 /bin/bash
+
+   - name: start nginx service from docker host
+     raw: docker exec -it webapp /bin/bash -c "service nginx start"
+
+   - name: check nginx service status in docker container
+     raw: docker exec -it webapp /bin/bash -c "service nginx status"
+     register: check_status
+
+   - debug: msg="{{check_status.stdout}}"
