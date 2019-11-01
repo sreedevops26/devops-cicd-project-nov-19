@@ -1,0 +1,14 @@
+version: '3'
+services:
+  #Nginx Service
+  webserver:
+    image: sreedevops26/nginx:1.0
+    container_name: webapp
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+#    networks:
+#      - app-network
+
