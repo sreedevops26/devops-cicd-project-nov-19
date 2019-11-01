@@ -7,9 +7,12 @@
    - name: remove existing docker container from docker host
      raw: docker rm -f webapp
      ignore_errors: true
+	 
+   - name: copy docker-compose file into dev docker host
+     copy: src=/var/lib/jenkins/workspace/cicd-project/webapp-compose.yml dest=/root
 
    - name: spinup docker container
-     raw: docker run -dti --name webapp -p 80:80 sreedevops26/nginx:1.0 /bin/bash
+     raw: docker-compose -f /root/webapp-compose.yml up -d
 
    - name: start nginx service from docker host
      raw: docker exec -it webapp /bin/bash -c "service nginx start"
@@ -19,3 +22,5 @@
      register: check_status
 
    - debug: msg="{{check_status.stdout}}"
+~
+
