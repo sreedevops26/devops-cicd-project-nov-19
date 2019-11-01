@@ -22,5 +22,12 @@ withDockerRegistry(credentialsId: 'docker-reg-creds', url: 'https://index.docker
 } 
 }
 }
+stage('run ansible playbook for spin up docker containers on top of dev env')
+{
+steps
+{
+ansiblePlaybook credentialsId: 'ansi-client-creds', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/cicd-project/deply-dev.yml'
+}
+}
 }
 }
