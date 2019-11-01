@@ -7,7 +7,7 @@
    - name: remove existing docker container from docker host
      raw: docker rm -f webapp
      ignore_errors: true
-	 
+
    - name: copy docker-compose file into dev docker host
      copy: src=/var/lib/jenkins/workspace/cicd-project/webapp-compose.yml dest=/root
 
