@@ -22,5 +22,6 @@
      register: check_status
 
    - debug: msg="{{check_status.stdout}}"
-~
+     
+
 
