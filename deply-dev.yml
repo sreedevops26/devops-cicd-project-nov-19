@@ -16,10 +16,12 @@
 
    - name: start nginx service from docker host
      raw: docker exec -it webapp /bin/bash -c "service nginx start"
+     ignore_errors: true
 
    - name: check nginx service status in docker container
      raw: docker exec -it webapp /bin/bash -c "service nginx status"
      register: check_status
+     ignore_errors: true
 
    - debug: msg="{{check_status.stdout}}"
      
