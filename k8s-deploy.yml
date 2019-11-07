@@ -2,7 +2,7 @@
  - hosts: k8s-master
    tasks:
    - name: bringup helm chart for create new containers for dev
-     command: helm upgrade rel3 myapp
+     command: helm rollback rel3 1
      args:
        chdir: /root/k8s-main
 #     ignore_errors: true
