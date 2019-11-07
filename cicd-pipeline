@@ -26,7 +26,7 @@ stage('run ansible playbook for spin up docker containers on top of dev env')
 {
 steps
 {
-ansiblePlaybook credentialsId: 'ansi-client-creds', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/cicd-project/deply-dev.yml'
+ansiblePlaybook credentialsId: 'ansi-client-creds', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/cicd-project/k8s-deploy.yml'
 }
 }
 }
