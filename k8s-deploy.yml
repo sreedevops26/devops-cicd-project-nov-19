@@ -10,7 +10,7 @@
 
    - name: Install helm chart from a git repo specifying path
      helm:
-       host: k8s-master
+       host: localhost
        chart:
          source:
            type: git
