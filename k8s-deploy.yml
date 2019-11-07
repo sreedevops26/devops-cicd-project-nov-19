@@ -2,7 +2,7 @@
  - hosts: k8s-master
    tasks:
    - name: bringup helm chart for create new containers for dev
-     command: helm install --name rel2 myapp
+     command: helm delete --purge rel2 
      args:
        chdir: /root/k8s-main
 #     ignore_errors: true
