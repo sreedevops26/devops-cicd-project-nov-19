@@ -1,11 +1,23 @@
 ---
  - hosts: k8s-master
    tasks:
-   - name: bringup helm chart for create new containers for dev
-     raw: helm install --name rel1 myapp
-     args:
-       chdir: /root/k8s-main
-     tags:
-       - install-chart
+#   - name: bringup helm chart for create new containers for dev
+#     raw: helm install --name rel1 myapp
+#     args:
+#       chdir: /root/k8s-main
+#     tags:
+#       - install-chart
+
+   - name: Install helm chart from a git repo specifying path
+     helm:
+       host: k8s-master
+       chart:
+         source:
+           type: git
+           location: https://github.com/sreedevops26/devops-cicd-project-nov-19.git
+           path: myapp
+       state: present
+       name: rel1
+       namespace: test-env
 
      
