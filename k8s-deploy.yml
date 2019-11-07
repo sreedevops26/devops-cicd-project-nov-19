@@ -1,0 +1,11 @@
+---
+ - hosts: k8s-master
+   tasks:
+   - name: bringup helm chart for create new containers for dev
+     raw: helm install --name rel1 myapp
+     args:
+       chdir: /root/k8s-main
+     tags:
+       - install-chart
+
+     
