@@ -2,7 +2,7 @@
  - hosts: k8s-master
    tasks:
    - name: bringup helm chart for create new containers for dev
-     command: helm rollback rel3 2
+     command: helm delete --purge rel3 
      args:
        chdir: /root/k8s-main
 #     ignore_errors: true
